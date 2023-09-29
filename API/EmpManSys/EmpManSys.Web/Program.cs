@@ -1,4 +1,6 @@
 
+using EmpManSys.BusinessLogic.Implementations;
+using EmpManSys.BusinessLogic.Interfaces;
 using EmpManSys.DAL;
 
 namespace EmpManSys.Web
@@ -19,6 +21,10 @@ namespace EmpManSys.Web
             //configured AppDbContext
             builder.Services.AddScoped(_ => new AppDbContext(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+            //App Services
+
+            builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+            builder.Services.AddScoped<IEmployeeEntryService, EmployeeEntryService>();
 
             var app = builder.Build();
 

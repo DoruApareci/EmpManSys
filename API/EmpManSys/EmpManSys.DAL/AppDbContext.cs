@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EmpManSys.DAL.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmpManSys.DAL;
 
 public class AppDbContext : DbContext
 {
+    #region Configurations
     private readonly string? _connectionString;
-
 
     public AppDbContext(string? connectionString)
     {
@@ -24,4 +25,9 @@ public class AppDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
     }
+    #endregion
+    #region Entities
+    public DbSet<Employee> Employees { get; set; }
+    public DbSet<EmployeeEntry> EmployeeEntries { get; set; }
+    #endregion
 }
